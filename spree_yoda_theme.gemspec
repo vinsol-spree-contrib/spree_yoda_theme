@@ -3,8 +3,8 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_yoda_theme'
   s.version     = '3.0.8'
-  s.summary     = 'TODO: Add gem summary here'
-  s.description = 'TODO: Add (optional) gem description here'
+  s.summary     = 'Helper for yoda theme'
+  s.description = 'Helper for yoda theme'
   s.required_ruby_version = '>= 2.0.0'
 
   s.author    = 'Sawan Gupta'
