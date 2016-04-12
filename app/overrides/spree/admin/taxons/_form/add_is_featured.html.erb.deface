@@ -1,0 +1,6 @@
+<!-- insert_bottom "[data-hook='admin_inside_taxon_form']" -->
+
+<div class="form-group" data-hook="is_featured">
+  <%= f.label :is_featured, Spree.t(:is_featured) %>
+  <%= f.check_box :is_featured, :value => @taxon.is_featured, :class => 'form-control' %>
+</div>
