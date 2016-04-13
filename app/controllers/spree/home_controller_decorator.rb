@@ -5,8 +5,13 @@ module Spree
 
     def index
       @featured_taxons = Spree::Taxon.where(is_featured: true).includes(:products)
-      @products = Spree::Product.joins(:taxons).where({ spree_taxons: { id: @featured_taxons } }).page(params[:page])
     end
+
+    private
+      def retrieve_searcher_products(taxon_id)
+        build_searcher(taxon: taxon_id, include_images: true).retrieve_products.limit(3)
+      end
+      helper_method :retrieve_searcher_products
 
   end
 end
