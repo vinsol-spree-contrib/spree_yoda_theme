@@ -18,7 +18,7 @@ module Spree
     private
       def sorted_option_values(option_type)
         _uniq_options = {}
-        variants.map do |_variant|
+        variants.reload.map do |_variant|
           value = _variant.option_values.joins(:option_type).where(spree_option_types: { presentation: option_type }).sort do |a, b|
             a.option_type.position <=> b.option_type.position
           end[0]
