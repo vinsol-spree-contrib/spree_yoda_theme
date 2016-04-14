@@ -1,7 +1,7 @@
 module Spree
   ProductsController.class_eval do
 
-    alias_method :orig_index, :index
+    alias :orig_index :index
 
     def index
       orig_index
