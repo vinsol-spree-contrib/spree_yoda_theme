@@ -1,0 +1,9 @@
+<!-- insert_after "[data-hook='admin_product_form_taxons']" -->
+
+<div data-hook="admin_product_form_badge">
+  <%= f.field_container :badge, class: ['form-group'] do %>
+    <%= f.label :badge_id, Spree.t(:badges) %>
+    <%= f.collection_select(:badge_id, @badges, :id, :name, { include_blank: Spree.t('match_choices.none') }, { class: 'select2' }) %>
+    <%= f.error_message_on :badge %>
+  <% end %>
+</div>

@@ -1,0 +1,12 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:editing_resource, resource: Spree::Badge.model_name.human) %> / <%= @badge.name %>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @badge } %>
+
+<%= form_for [:admin, @badge] do |f| %>
+  <fieldset>
+    <%= render 'form', f: f %>
+    <%= render 'spree/admin/shared/edit_resource_links', collection_url: admin_badges_path %>
+  </fieldset>
+<% end %>

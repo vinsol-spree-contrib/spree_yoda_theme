@@ -2,6 +2,7 @@ module Spree
   Product.class_eval do
 
     delegate :maximum_retail_price, to: :master
+    belongs_to :badge, class_name: 'Spree::Badge'
 
     def uniq_options(option_type)
       sorted_option_values(option_type) do |value, _uniq_options, _variant|
