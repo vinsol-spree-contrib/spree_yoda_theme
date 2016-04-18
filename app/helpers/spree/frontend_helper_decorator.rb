@@ -14,15 +14,20 @@ module Spree
       text.html_safe
     end
 
-    def taxons_header(root_taxon, current_taxon, max_level = 1)
+    def taxons_header(root_taxon, current_taxon, max_level = 1, child_node = false)
       return '' if max_level < 1 || root_taxon.leaf?
-      content_tag :ul, class: 'list-group-item', data: { 'taxon-level': root_taxon.id } do
-        taxons = root_taxon.children.map do |taxon|
-          css_class = (current_taxon && current_taxon.self_and_ancestors.include?(taxon)) ? 'list-group-item active' : 'list-group-item'
-          link_to(taxon.name, seo_url(taxon), class: css_class, data: { 'taxon-root': taxon.id }) + taxons_header(taxon, current_taxon, max_level - 1)
+      options = {}
+
+      taxons = root_taxon.children.map do |taxon|
+        options = { class: 'col-sm-1', data: { 'show-taxon': true } }
+        options[:class] += ' dropdown-menu' if child_node
+        content_tag :ul, options do
+          css_class = (current_taxon && current_taxon.self_and_ancestors.include?(taxon)) ? 'active' : ''
+          link_options = { class: "#{ css_class } dropdown-toggle", data: { toggle: 'dropdown' } }
+          link_to(taxon.name, seo_url(taxon), link_options) + taxons_header(taxon, current_taxon, max_level - 1, true)
         end
-        safe_join(taxons, "\n")
       end
+      safe_join(taxons, "\n")
     end
   end
 end
