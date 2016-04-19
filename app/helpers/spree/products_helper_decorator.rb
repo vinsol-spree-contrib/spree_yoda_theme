@@ -20,5 +20,9 @@ module Spree
     def short_product_descritpion(product)
       truncate(product.description, length: 100, omission: '')
     end
+
+    def empty_product_properties_count(product_properties)
+      product_properties.where.not(value: '').count
+    end
   end
 end
