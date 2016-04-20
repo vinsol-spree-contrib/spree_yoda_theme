@@ -34,5 +34,17 @@ module Spree
     def fetch_products_with_product(taxon)
       Spree::Classification.where(taxon_id: taxon.self_and_descendants.pluck(:id)).count
     end
+
+    def show_flash_messages(opts = {})
+      ignore_types = ["order_completed"].concat(Array(opts[:ignore_types]).map(&:to_s) || [])
+      concat(content_tag :div, '', class: "close fa fa-times-circle", data: { 'flash-message': true })
+      flash.map do |msg_type, text|
+        unless ignore_types.include?(msg_type)
+          concat(content_tag :div, text, class: "alert alert-#{msg_type}")
+        end
+      end
+      nil
+    end
+
   end
 end
