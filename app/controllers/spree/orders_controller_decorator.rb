@@ -1,6 +1,8 @@
 module Spree
   OrdersController.class_eval do
     alias_method :orig_update, :update
+    prepend OrdersControllerHelper
+    include ProductRetriever
     def update
       if @order.contents.update_cart(order_params)
         respond_with(@order) do |format|
