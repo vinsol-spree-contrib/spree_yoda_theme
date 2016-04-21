@@ -5,7 +5,7 @@ module Spree
       respond_to do |format|
         format.html {  }
         format.js do
-          @products = @products.page(params[:page]).per(12)
+          @products = @products.page(params[:page]).per(16)
           render 'index.js'
         end
       end
