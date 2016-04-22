@@ -1,10 +1,12 @@
 module Spree
   OrdersController.class_eval do
-    alias_method :orig_update, :update
     prepend OrdersControllerHelper
     include ProductRetriever
+
+    alias_method :orig_update, :update
+
     def update
-      if @order.contents.update_cart(order_params)
+      if @order.contents.update_cart(order_params.merge(state: 'address'))
         respond_with(@order) do |format|
           format.html do
             if params.has_key?(:checkout)
