@@ -6,7 +6,7 @@ module Spree
     alias_method :orig_update, :update
 
     def update
-      if @order.contents.update_cart(order_params.merge(state: 'address'))
+      if @order.contents.update_cart(order_params.merge(state: 'cart'))
         respond_with(@order) do |format|
           format.html do
             if params.has_key?(:checkout)
