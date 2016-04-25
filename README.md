@@ -9,7 +9,7 @@ Installation
 Add spree_yoda_theme to your Gemfile:
 
 ```ruby
-gem 'spree_yoda_theme'
+gem 'spree_yoda_theme', git: 'https://github.com/vinsol/spree_yoda_theme.git'
 ```
 
 Bundle your dependencies and run the installation generator:
