@@ -22,7 +22,7 @@ module Spree
     end
 
     def empty_product_properties_count(product_properties)
-      product_properties.where.not(value: '').count
+      product_properties.where.not(value: '').size
     end
   end
 end
