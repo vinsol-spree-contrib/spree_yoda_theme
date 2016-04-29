@@ -21,11 +21,5 @@ module Spree
     def fetch_products_count_by_taxon(taxon)
       Spree::Classification.where(taxon_id: taxon.self_and_descendants.pluck(:id)).count
     end
-
-    def cache_key_for_taxons
-      max_updated_at = @taxons.maximum(:updated_at).to_i
-      parts = [@taxon.try(:id), max_updated_at].compact.join("-")
-      "#{I18n.locale}/taxons/#{parts}/#{Spree::Config[:theme_name]}"
-    end
   end
 end
