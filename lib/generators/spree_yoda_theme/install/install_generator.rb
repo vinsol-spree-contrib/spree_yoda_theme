@@ -26,6 +26,13 @@ module SpreeYodaTheme
           puts 'Skipping rake db:migrate, don\'t forget to run it!'
         end
       end
+
+      def load_sample_data
+        copy_spree_default_views = ['', 'y', 'Y'].include?(ask 'Would you like to copy spree default views? [Y/n]')
+        if copy_spree_default_views
+          FileUtils.cp_r(::SpreeYodaTheme::Engine.root.join('generator', 'themes'), Rails.root.join('vendor'))
+        end
+      end
     end
   end
 end
