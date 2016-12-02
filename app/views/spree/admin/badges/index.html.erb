@@ -1,0 +1,31 @@
+<% content_for :page_title do %>
+  <%= plural_resource_name(Spree::Badge) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_badge), new_admin_badge_url(@badge), { class: "btn-success", icon: 'add', id: 'new_badge_link' } %>
+<% end if can? :create, Spree::Badge %>
+
+<div id="badge-list" data-hook>
+  <table class="table" id='listing_badges' data-hook>
+    <thead>
+      <tr data-hook="badges_header">
+        <th><%= Spree.t(:name) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @badges.each do |badge| %>
+        <tr id="<%= spree_dom_id badge %>" data-hook="states_row">
+          <td><%= badge.name %></td>
+          <td class="actions actions-2 text-right">
+            <%= link_to_edit_url(edit_admin_badge_url(badge), :no_text => true) if can? :edit, badge %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @badges.empty? %>
+        <tr><td colspan="3"><%= Spree.t(:none) %></td></tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
