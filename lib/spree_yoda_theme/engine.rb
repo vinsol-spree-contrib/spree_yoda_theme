@@ -11,6 +11,7 @@ module SpreeYodaTheme
     end
 
     initializer "asset_paths" do |app|
+      FileUtils.mkdir_p(Rails.root.join('vendor', 'themes'))
       Dir.human_entries(Rails.root.join('vendor', 'themes')).each do |theme_name|
         Rails.application.config.assets.paths.insert(8,
           Rails.root.join('vendor', 'themes', theme_name, 'javascripts').to_s,
@@ -23,6 +24,7 @@ module SpreeYodaTheme
     end
 
     initializer "asset_paths" do |app|
+      FileUtils.mkdir_p(Rails.root.join('vendor', 'themes'))
       Rails.application.config.assets.paths.insert(8,
         Rails.root.join('vendor', 'themes').to_s)
     end
