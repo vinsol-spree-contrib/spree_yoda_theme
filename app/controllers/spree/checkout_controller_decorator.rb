@@ -2,6 +2,7 @@ module Spree
   CheckoutController.class_eval do
     private
       def ensure_valid_state
+        @order.reload
         if @order.state != correct_state && !skip_state_validation?
           flash.keep
           @order.state = correct_state
