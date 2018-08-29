@@ -30,7 +30,7 @@ Configuration
 
   ```
   1. Go on the url `/admin/theme` .
-  2. Select the the theme you want to apply from the `Choose a new theme` drop down.
+  2. Select the theme you want to apply from the `Choose a new theme` drop down.
   3. Click on apply.
   ```
 
@@ -38,7 +38,7 @@ Configuration
 
   ```
   1. Go on the url `/admin/theme` .
-  2. Select the the theme `default` from the `Choose a new theme` drop down.
+  2. Select the theme `default` from the `Choose a new theme` drop down.
   3. Click on apply.
   ```
 
